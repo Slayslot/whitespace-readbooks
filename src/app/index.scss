@@ -3,21 +3,11 @@ $mobile-width-2: 360px;
 $tablet-width: 768px;
 $desktop-width: 980px;
 $mobile-height: 550px;
-$background: #283593;
-$white: #ecf0f1;
-$black: #2c3e50;
-$grey: #7f8c8d;
-$green: #4CAF50;
-$green-dark: #388E3C;
+$white: #fff;
+$midnightblue: #2c3e50;
+$asbestos: #7f8c8d;
+$background: #F2F4F7;
 
-@mixin BoxShadowHelper($level: 1){
-  @if $level == 1 {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
-  }
-  @if $level == 2 {
-    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
-  }
-}
 @mixin media-min-width($width){
   @media(min-width: $width){
     @content;
@@ -41,144 +31,233 @@ $green-dark: #388E3C;
 //import boostrap
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 //import bootstrap
-body{
-  color: $black;
+//fontello
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.eot?84067006');
+  src: url('../fonts/fontello.eot?84067006#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff2?84067006') format('woff2'),
+       url('../fonts/fontello.woff?84067006') format('woff'),
+       url('../fonts/fontello.ttf?84067006') format('truetype'),
+       url('../fonts/fontello.svg?84067006#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-#profile-container{
-  padding-top: 1px;
-  margin-top: -1px;
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?84067006#fontello') format('svg');
+  }
+}
+*/
+
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-search:before { content: '\e800'; } /* '' */
+.icon-down-open:before { content: '\e801'; } /* '' */
+.icon-left-open:before { content: '\e802'; } /* '' */
+.icon-right-open:before { content: '\e803'; } /* '' */
+.icon-dot-3:before { content: '\e804'; } /* '' */
+.icon-cancel:before { content: '\e805'; } /* '' */
+.icon-menu:before { content: '\f0c9'; } /* '' */
+.icon-angle-down:before { content: '\f107'; } /* '' */
+//fontello end
+body{
   background: $background;
+}
+.navbar-default{
+  background: $white;
+  border-color: $white;
+}
+.navbar{
+  border-radius: 0;
 
-  #content {
+  @include media-min-width($tablet-width){
     position: relative;
-    margin-top: 100px;
-    background-color: $white;
-    box-shadow: 0px -1px 10px rgba(255,255,255,0.4);
-    padding-top: 150px;
-    padding-bottom: 2em;
+    height: 70px;
+  }
+  .container-fluid{
+    @include media-min-width($tablet-width){
+      margin-top: 7px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+.navbar-brand{
+  letter-spacing: 1px;
+  font-weight: 100;
+  @include media-min-width($tablet-width){
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+  }
+  span{
+    font-weight: 600;
+    color: $midnightblue;
+  }
+}
+.navbar-form{
+  border-color: $white !important;
 
-    #profile-info {
+  @include media-max-width($tablet-width){
+    border-color:$background !important;
+  }
+  span{
+    color: #95a5a6;
+  }
+  input{
+    border-color: $white;
+    box-shadow: none;
+
+    &:focus{
+      border-color: $white;
+      box-shadow: none;
+    }
+  }
+}
+.custom-toggle{
+  width: 150px;
+  padding: 0 !important;
+  @include media-min-width($tablet-width){
+  width: auto;
+  padding: 11px 25px 15px 15px !important;
+  }
+  img{
+    @include media-min-width($tablet-width){
+      width: 30px;
+      height: 30px;
+    }
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid $midnightblue;
+  }
+  .menu-text{
+    margin-top:1em;
+    @include media-min-width($tablet-width){
+      display: none;
+    }
+  }
+}
+.drowdown-toggle{
+  span{
+    font-weight: 500;
+  }
+}
+.li-menu{
+  a{
+    padding-right: 25px !important;
+  }
+  .icon-menu{
+    font-size: 1.5em;
+    margin-right: 5px;
+  }
+  .menu-text{
+    position: relative;
+    bottom: 1px;
+  }
+}
+
+.dropdown {
+  &::after{
+    @include media-min-width($tablet-width){
+      border-right: 1px solid $asbestos;
+      height: 25px;
+      content: '';
       position: absolute;
-      top: -95px;
-      width: 100%;
-      z-index: 2;
-      text-align: center;
-
-      #profile-name {
-        color: $white;
-        text-transform: uppercase;
-        font-weight: 800;
-        letter-spacing: 11px;
-        font-size: 2.5em;
-      }
-
-      #profile-image {
-        display: block;
-        border-radius: 100px;
-        border: 1px solid $white;
-        width: 128px;
-        height: 128px;
-        margin: 15px auto 0;
-        box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
-      }
-
-    }
-
-    .or-divider{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      font-family: "futura-pt";
-      font-size: 3em;
-      margin: 0 auto;
-      width: 70%;
-      @include media-max-width($desktop-width){
-        width: 80%;
-      }
-      @include media-max-width($tablet-width){
-        width: 90%;
-      }
-      &:before{
-        content: '';
-        height: .065em;
-        background: $grey;
-        flex: 1;
-        margin: 0 .25em 0 0;
-      }
-      &:after{
-        content: '';
-        height: .065em;
-        background: $grey;
-        flex: 1;
-        margin: 0 0 0 .25em;
-      }
-    }
-    .button {
-      border: 0;
-      outline: none;
-      border-radius: 0;
-      padding: 15px 0;
-      font-size: 2rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      background: $green;
-      color: $white;
-      -webkit-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      -webkit-appearance: none;
-      margin-top: 2em;
-      margin-bottom: 2em;
-
-      &[disabled]{
-        cursor: not-allowed;
-        opacity: 0.4;
-
-        &:hover{
-          background: $green;
-        }
-      }
-
-      &:hover,&:focus{
-        background: $green-dark;
-      }
-    }
-
-    .button-block {
+      left: 100%;
+      bottom: 20%;
       display: block;
-      width: 50%;
-      @include media-max-width($mobile-height){
-        width: 70%;
-      }
     }
-    .input-container{
-      margin-top: 2em;
-      margin-bottom: 2em;
-      display: flex;
-      justify-content: center;
-      label{
-        margin-right: 5em;
-        margin-top: 0.5em;
-        min-width: 100px;
-        max-width: 100px;
-        @include media-max-width($mobile-height){
-          min-width: 80px;
-          max-width: 80px;
-          margin-left:1em;
-          margin-right:3.5em;
-        }
-      }
-      input,select{
-        max-width: 400px;
-        @include media-max-width($mobile-height){
-          max-width: 200px;
-        }
-      }
+  }
+}
+.custom-dropdown{
+  &::after{
+    @include media-min-width($tablet-width){
+      bottom: 28%;
     }
-    .error{
-      font-size: 1.1em;
-      color:red;
+  }
+}
+.navbar-collapse.in {
+  position: fixed;
+  overflow-y: auto;
+  height: 100vh;
+  width: 100vw;
+  max-height: unset !important;
+  @include media-max-width($tablet-width){
+    background: $background;
+  }
+}
+#nav-wrapper{
+  @include media-max-width($tablet-width){
+    position: absolute;
+    top: 43%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+  }
+}
+.navbar-toggle{
+  border-color: $white !important;
+  padding: 0;
+  color: $asbestos;
+
+  &:hover,&:focus{
+    background: $white !important;
+    color: $midnightblue;
+  }
+  span{
+    font-size: 1.5em;
+  }
+}
+@media(min-width: $tablet-width) and (max-width: 900px){
+  #nav-collapse{
+    padding-left:0;
+    padding-right:0;
+  }
+  .navbar-form{
+    padding-left:10px;
+    padding-right:10px;
+
+    input{
+      width:150px !important;
     }
   }
 }
