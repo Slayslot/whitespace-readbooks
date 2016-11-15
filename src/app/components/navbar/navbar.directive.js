@@ -18,17 +18,26 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController($log) {
+    function NavbarController($document,AnimateService) {
       var vm = this;
       vm.menuopen = false;
 
       vm.menuClick = function(){
+        var navBar = angular.element($document[0].querySelector('.navbar'));
         if(vm.menuopen){
           vm.menuopen = false;
+          navBar.removeClass('fixthis');
         }else{
           vm.menuopen = true;
+          navBar.addClass('fixthis');
         }
-        $log.info(vm.menuopen);
+      }
+
+      vm.sideOpen = function(){
+        var sideBar = angular.element($document[0].querySelector('.side-nav'));
+        sideBar.removeClass('close');
+        AnimateService.animateCss('slideInRight','.side-nav');
+        sideBar.addClass('open');
       }
     }
   }

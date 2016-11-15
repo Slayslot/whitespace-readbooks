@@ -142,16 +142,25 @@ body{
 .navbar-form{
   border-color: $white !important;
 
-  @include media-max-width($tablet-width){
+  @include media-max-width(#{$tablet-width}-1px){
     border-color:$background !important;
   }
   span{
     color: #95a5a6;
+    @include media-max-width(#{$tablet-width}-1px){
+      position: relative;
+      top: 1.8em;
+      left: 12%;
+    }
   }
   input{
     border-color: $white;
     box-shadow: none;
-
+    @include media-max-width(#{$tablet-width}-1px){
+      padding-left: 3em;
+      width: 80%;
+      margin: 0 auto;
+    }
     &:focus{
       border-color: $white;
       box-shadow: none;
@@ -161,6 +170,7 @@ body{
 .custom-toggle{
   width: 150px;
   padding: 0 !important;
+  margin: 0 auto;
   @include media-min-width($tablet-width){
   width: auto;
   padding: 11px 25px 15px 15px !important
@@ -177,17 +187,33 @@ body{
   }
   .menu-text{
     margin-top:1em;
+    font-size: 1.5em;
+    width: 117%;
     @include media-min-width($tablet-width){
       display: none;
     }
   }
 }
-.drowdown-toggle{
+.dropdown-toggle{
   span{
     font-weight: 500;
   }
 }
+.navbar-left{
+  @include media-max-width(#{$tablet-width}-1px){
+    margin-top: -20px;
+  }
+  .dropdown-toggle{
+    @include media-max-width(#{$tablet-width}-1px){
+      text-align: center;
+      font-size:1.5em;
+    }
+  }
+}
 .li-menu{
+  @include media-max-width(#{$tablet-width}-1px){
+    text-align: center;
+  }
   a{
     padding-right: 25px !important;
   }
@@ -226,17 +252,20 @@ body{
   overflow-y: auto;
   height: 100vh;
   width: 100vw;
+  z-index: 999;
   max-height: unset !important;
-  @include media-max-width($tablet-width){
+  @include media-max-width(#{$tablet-width}-1px){
     background: $background;
   }
 }
-#nav-wrapper{
-  @include media-max-width($tablet-width){
-    position: absolute;
-    top: 43%;
-    left: 53%;
-    transform: translate(-50%, -50%);
+.fixthis{
+  position: fixed;
+  z-index: 999;
+  width:100%;
+}
+.dropdown-menu{
+  @include media-max-width(#{$tablet-width}-1px){
+    text-align: center;
   }
 }
 .navbar-toggle{
@@ -264,6 +293,11 @@ body{
     input{
       width:150px !important;
     }
+  }
+}
+.dropdown.pull-right,.navbar-form.pull-right.ng-pristine.ng-valid{
+  @include media-max-width(#{$tablet-width}-1px){
+    float: none !important;
   }
 }
 //navbar
@@ -442,3 +476,49 @@ fieldset, label { margin: 0; padding: 0; }
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 //rating
+
+//side-nav
+
+.side-nav{
+  &.open{
+    width:20vw;
+    height: 100vh;
+    position: absolute;
+    right:0;
+    top:0;
+    background: #ecf0f1;
+    z-index:1000;
+    position: fixed;
+  }
+  &.close{
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .icon-cancel{
+    font-size: 2em;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    color: $midnightblue;
+    cursor: pointer;
+  }
+  .side-menu{
+    list-style: none;
+    font-size: 2em;
+    text-align: center;
+    li{
+      margin-top: 1em;
+      a{
+        color: $midnightblue;
+        cursor: pointer;
+
+        &:hover{
+          text-decoration: none;
+          color: #3498db;
+        }
+      }
+    }
+  }
+}
