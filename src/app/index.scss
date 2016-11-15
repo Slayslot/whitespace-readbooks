@@ -6,6 +6,7 @@ $mobile-height: 550px;
 $white: #fff;
 $midnightblue: #2c3e50;
 $asbestos: #7f8c8d;
+$silver: #bdc3c7;
 $background: #F2F4F7;
 
 @mixin media-min-width($width){
@@ -30,6 +31,7 @@ $background: #F2F4F7;
 }
 //import boostrap
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 //import bootstrap
 //fontello
 @font-face {
@@ -289,3 +291,134 @@ body{
     width:80px;
   }
 }
+//sidebar
+
+//tabs
+.tabs{
+  border-bottom: 1px solid $silver;
+  margin-bottom: 5em;
+  ul{
+    margin-bottom: 0;
+    list-style: none;
+    li{
+      padding-bottom: 10px;
+      margin-left: 2.5em;
+      cursor: pointer;
+
+      &:hover{
+        border-bottom: 3px solid #3498db;
+      }
+      h4{
+        margin-top:20px;
+      }
+    }
+  }
+  .tab-active{
+    border-bottom: 3px solid #3498db;
+  }
+}
+//tabs
+
+//cards
+.book-cards{
+  padding-right: 0 !important;
+  background: $white;
+  margin-bottom: 6em;
+  min-height: 270px;
+  max-height: 270px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  .card-container{
+    height: 222px;
+    border-bottom: 1px solid #E0E0E0;
+
+    .card-info{
+      padding-right: 0;
+    }
+
+    .card-menu{
+      font-size: 1.5em;
+      cursor: pointer;
+      color: $asbestos;
+      transform: rotate(-90deg);
+      position: relative;
+      top: 5px;
+      left: 5px;
+    }
+  }
+  &:hover{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+  .like-container{
+    height: 50px;
+    img{
+      width: 30px;
+      border-radius: 50%;
+      border: 1px solid $midnightblue;
+      margin-top:9px;
+      margin-left:2px;
+    }
+    span{
+      position: relative;
+      top: 6px;
+      left: 15px;
+    }
+  }
+  .book-cover{
+    width: 155px;
+    position: relative;
+    bottom: 30px;
+    padding-left: 0;
+  }
+}
+//cards
+
+//rating
+fieldset, label { margin: 0; padding: 0; }
+/****** Style Star Rating Widget *****/
+
+.rating {
+  font-size: 0.8em;
+  border: none;
+  float: left;
+}
+.custom-col{
+  padding-left:0;
+}
+.voters{
+  font-size: 0.9em;
+  position: relative;
+  top:4px;
+  left: 4px;
+}
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+ float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+//rating
