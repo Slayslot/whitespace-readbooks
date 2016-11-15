@@ -98,8 +98,11 @@ $background: #F2F4F7;
 .icon-menu:before { content: '\f0c9'; } /* '' */
 .icon-angle-down:before { content: '\f107'; } /* '' */
 //fontello end
+
+//navbar
 body{
   background: $background;
+  overflow-x: hidden;
 }
 .navbar-default{
   background: $white;
@@ -158,7 +161,8 @@ body{
   padding: 0 !important;
   @include media-min-width($tablet-width){
   width: auto;
-  padding: 11px 25px 15px 15px !important;
+  padding-top: 11px !important;
+  padding-right: 25px !important;
   }
   img{
     @include media-min-width($tablet-width){
@@ -259,5 +263,30 @@ body{
     input{
       width:150px !important;
     }
+  }
+}
+//navbar
+
+//sidebar
+
+.author-week{
+  list-style: none;
+
+  li{
+    margin-top:1em;
+  }
+  img{
+    width:60px;
+    border-radius: 50%;
+  }
+}
+.books-year{
+  list-style: none;
+
+  li{
+    margin-top:1em;
+  }
+  img{
+    width:80px;
   }
 }

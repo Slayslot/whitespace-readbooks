@@ -1,4 +1,13 @@
 <section id="home-container">
   <main-navbar></main-navbar>
-  <div ui-view></div>
+  <div class="row">
+    <div class="container-fluid">
+      <div class="hidden-xs hidden-sm col-md-3">
+        <side-bar></side-bar>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-9">
+        <div ui-view></div>
+      </div>
+    </div>
+  </div>
 </section>
