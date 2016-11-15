@@ -161,8 +161,7 @@ body{
   padding: 0 !important;
   @include media-min-width($tablet-width){
   width: auto;
-  padding-top: 11px !important;
-  padding-right: 25px !important;
+  padding: 11px 25px 15px 15px !important
   }
   img{
     @include media-min-width($tablet-width){
