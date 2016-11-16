@@ -18,12 +18,17 @@
     return directive;
 
     /** @ngInject */
-    function TabsContoller() {
+    function TabsContoller(CardsService, $scope) {
       var vm = this;
-      vm.active = 0;
+      vm.active = CardsService.getNum();
 
-      vm.iterateActive = function(toNum){
+      $scope.$on('handleChange', function() {
+        vm.active = CardsService.getNum();
+      });
+
+      vm.iterateActive = function(toNum, genre){
         vm.active=toNum;
+        CardsService.pushtoCards(genre);
       }
     }
   }

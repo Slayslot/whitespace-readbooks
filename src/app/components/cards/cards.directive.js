@@ -18,7 +18,18 @@
     return directive;
 
     /** @ngInject */
-    function CardsController() {
+    function CardsController(ProgressBarService,CardsService, $scope) {
+      var vm = this;
+      vm.genre = CardsService.getGenre();
+      vm.render = CardsService.fetch();
+      $scope.$on('handleBroadcast', function() {
+        vm.genre = CardsService.getGenre();
+      });
+
+      vm.genreChange = function(toNum){
+        CardsService.pushtoTabs(toNum);
+      }
+      ProgressBarService.stop();
     }
   }
 

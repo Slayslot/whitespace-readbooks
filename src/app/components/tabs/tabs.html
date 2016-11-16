@@ -1,24 +1,24 @@
 <div class="row">
   <div class="container-fluid">
-    <div class="tabs col-md-12">
+    <div class="tabs col-xs-12 col-sm-12 col-md-12">
       <h3 class="pull-left">Popular by Genre</h3>
       <ul class="genres pull-right">
-        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===0}" ng-click="tabs.iterateActive(0)">
+        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===0}" ng-click="tabs.iterateActive(0, 'all')">
           <h4>All Genres</h4>
         </li>
-        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===1}" ng-click="tabs.iterateActive(1)">
+        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===1}" ng-click="tabs.iterateActive(1, 'business')">
           <h4>Business</h4>
         </li>
-        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===2}" ng-click="tabs.iterateActive(2)">
+        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===2}" ng-click="tabs.iterateActive(2, 'science')">
           <h4>Science</h4>
         </li>
-        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===3}" ng-click="tabs.iterateActive(3)">
+        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===3}" ng-click="tabs.iterateActive(3, 'fiction')">
           <h4>Fiction</h4>
         </li>
-        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===4}" ng-click="tabs.iterateActive(4)">
+        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===4}" ng-click="tabs.iterateActive(4, 'philosophy')">
           <h4>Philosophy</h4>
         </li>
-        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===5}" ng-click="tabs.iterateActive(5)">
+        <li class="pull-left" ng-class="{ 'tab-active': tabs.active===5}" ng-click="tabs.iterateActive(5, 'biography')">
           <h4>Biography</h4>
         </li>
       </ul>

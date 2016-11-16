@@ -1,127 +1,36 @@
+<div id="drop-container">
+<label for="genre-drop">Popular by Genre</label>
+<select id="genre-drop" class="form-control" ng-model="cards.genre">
+  <option ng-click="cards.genreChange(0)" value="">---Please select---</option>
+  <option ng-click="cards.genreChange(0)" value="all">All Genres</option>
+  <option ng-click="cards.genreChange(1)" value="business">Business</option>
+  <option ng-click="cards.genreChange(2)" value="science">Science</option>
+  <option ng-click="cards.genreChange(3)" value="fiction">Fiction</option>
+  <option ng-click="cards.genreChange(4)" value="philosophy">Philosophy</option>
+  <option ng-click="cards.genreChange(5)" value="biography">Biography</option>
+</select>
+</div>
 <div class="row">
-  <div class="container-fluid">
-    <div class="col-md-5 book-cards">
-      <div class="card-container clearfix">
-        <img class="col-md-3 book-cover" src="assets/images/act like it.jpg"/>
-        <div class="card-info col-md-8">
+  <div class="custom-container container-fluid">
+    <div ng-repeat="card in cards.render | filter:cards.genre">
+      <div ng-class-even="'col-md-offset-1'" class="col-xs-12 col-sm-12 col-md-5 book-cards">
+        <div class="card-container clearfix">
           <span class="card-menu icon-dot-3 pull-right"></span>
-          <h4>Act Like It</h4>
-          <p>by Lucy Parker</p>
-          <div class="custom-col col-md-12">
-            <book-rating></book-rating>
-            <span class="voters">1,000,000 voters</span>
+          <img class="col-xs-3 col-sm-3 col-md-3 book-cover" src="{{::card.src}}"/>
+          <div class="card-info col-xs-8 col-sm-8 col-md-8">
+            <h4>{{::card.name}}</h4>
+            <p class="author-name">{{::card.author}}</p>
+            <div class="custom-col col-xs-12 col-sm-12 col-md-12">
+              <book-rating></book-rating>
+              <span class="voters">{{card.voters}} voters</span>
+            </div>
+            <p class="card-desc">{{card.desc}}</p>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit metus, scelerisque vel orci sagittis, sodales vehicula ante.</p>
         </div>
-      </div>
-      <div class="like-container clearfix">
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <span>Samantha Williams and 2 other friends likes this</span>
-      </div>
-    </div>
-    <div class="col-md-offset-1 col-md-5 book-cards">
-      <div class="card-container clearfix">
-        <img class="col-md-3 book-cover" src="assets/images/alone on the wall.jpg"/>
-        <div class="card-info col-md-8">
-          <span class="card-menu icon-dot-3 pull-right"></span>
-          <h4>Alone On The Wall</h4>
-          <p>by David Roberts</p>
-          <div class="custom-col col-md-12">
-            <book-rating></book-rating>
-            <span class="voters">1,000,000 voters</span>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit metus, scelerisque vel orci sagittis, sodales vehicula ante.</p>
+        <div class="like-container clearfix">
+          <img ng-repeat="image in card.likes.imgs" src="{{image.src}}"/>
+          <span><b>{{card.likes.descname}}</b> and <b>{{card.likes.descother}}</b> like this</span>
         </div>
-      </div>
-      <div class="like-container clearfix">
-        <img src="assets/images/user.jpg"/>
-        <span>Kimberly Jones likes this</span>
-      </div>
-    </div>
-    <div class="col-md-5 book-cards">
-      <div class="card-container clearfix">
-        <img class="col-md-3 book-cover" src="assets/images/the painters daughter.jpg"/>
-        <div class="card-info col-md-8">
-          <span class="card-menu icon-dot-3 pull-right"></span>
-          <h4>The Painter's Daughter</h4>
-          <p>by Julie Klassen</p>
-          <div class="custom-col col-md-12">
-            <book-rating></book-rating>
-            <span class="voters">1,000,000 voters</span>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit metus, scelerisque vel orci sagittis, sodales vehicula ante.</p>
-        </div>
-      </div>
-      <div class="like-container clearfix">
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <span>Samantha Williams and 2 other friends like this</span>
-      </div>
-    </div>
-    <div class="col-md-offset-1 col-md-5 book-cards">
-      <div class="card-container clearfix">
-        <img class="col-md-3 book-cover" src="assets/images/dark murder.jpg"/>
-        <div class="card-info col-md-8">
-          <span class="card-menu icon-dot-3 pull-right"></span>
-          <h4>Dark Murder</h4>
-          <p>by Helen H</p>
-          <div class="custom-col col-md-12">
-            <book-rating></book-rating>
-            <span class="voters">1,000,000 voters</span>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit metus, scelerisque vel orci sagittis, sodales vehicula ante.</p>
-        </div>
-      </div>
-      <div class="like-container clearfix">
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <span>Samantha Williams and 2 other friends like this</span>
-      </div>
-    </div>
-    <div class="col-md-5 book-cards">
-      <div class="card-container clearfix">
-        <img class="col-md-3 book-cover" src="assets/images/alex ferguson.jpg"/>
-        <div class="card-info col-md-8">
-          <span class="card-menu icon-dot-3 pull-right"></span>
-          <h4>Alex Ferguson: My Autobiography</h4>
-          <p>by Alex Ferguson</p>
-          <div class="custom-col col-md-12">
-            <book-rating></book-rating>
-            <span class="voters">1,000,000 voters</span>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit metus, scelerisque vel orci sagittis, sodales vehicula ante.</p>
-        </div>
-      </div>
-      <div class="like-container clearfix">
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <span>Samantha Williams and 2 other friends like this</span>
-      </div>
-    </div>
-    <div class="col-md-offset-1 col-md-5 book-cards">
-      <div class="card-container clearfix">
-        <img class="col-md-3 book-cover" src="assets/images/the devils playground.jpg"/>
-        <div class="card-info col-md-8">
-          <span class="card-menu icon-dot-3 pull-right"></span>
-          <h4>The Devils Playground</h4>
-          <p>by Eliza Freed</p>
-          <div class="custom-col col-md-12">
-            <book-rating></book-rating>
-            <span class="voters">1,000,000 voters</span>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit metus, scelerisque vel orci sagittis, sodales vehicula ante.</p>
-        </div>
-      </div>
-      <div class="like-container clearfix">
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <img src="assets/images/user.jpg"/>
-        <span>Samantha Williams and 2 other friends like this</span>
       </div>
     </div>
   </div>
